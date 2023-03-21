@@ -20,4 +20,4 @@ class RegisterView(View):
             User.objects.create_user(cd['username'], cd['email'], cd['password'])
             messages.success(request, 'you registered successfully', 'success')
             return redirect('home:home')
-        return render(request, self.template_name, {'form': forms})
+        return render(request, self.template_name, {'form': form})
