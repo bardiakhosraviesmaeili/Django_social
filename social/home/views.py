@@ -42,7 +42,7 @@ class PostUpdateView(LoginRequiredMixin, View):
         if not post.user.id == request.user.id:
             messages.error(request, ' you cannot update this post', 'danger')
             return redirect('home:home')
-        return super().dispatch(request,*args,**kwargs)
+        return super().dispatch(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
         post = self.post_instance
