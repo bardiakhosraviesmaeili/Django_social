@@ -42,7 +42,7 @@ class PostUpdateView(LoginRequiredMixin, View):
         if not post.user.id == request.user.id:
             messages.error(request, ' you cannot update this post', 'danger')
             return redirect('home:home')
-        return super().dispatch(request, *args, **kwargs)
+        return super().dispatch(request,*args,**kwargs)
 
     def get(self, request, *args, **kwargs):
         post = self.post_instance
@@ -51,7 +51,7 @@ class PostUpdateView(LoginRequiredMixin, View):
 
     def post(self, request, *args, **kwargs):
         post = self.post_instance
-        form = self.form_class(request.post, instance=post)
+        form = self.form_class(request.POST, instance=post)
         if form.is_valid():
             new_post = form.save(commit=False)
             new_post.slug = slugify(form.cleaned_data['body'][:30])
