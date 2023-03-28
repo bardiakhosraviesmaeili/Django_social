@@ -29,7 +29,7 @@
             <p class="card-body">{{ comment.body }}</p>
 
             {% if request.user.is_authenticated %}
-                <form action="{% url 'home:add_reply' post.id comment.id %}" method="post">
+                <form action="{% url 'home:add_reply' post.id comment.id %}" method="post" style="display: none">
                     {% csrf_token %}
                     {{ reply_form.as_p }}
                     <input type="submit" value="send">
