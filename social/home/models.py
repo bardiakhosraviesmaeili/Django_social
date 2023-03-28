@@ -27,3 +27,6 @@ class Comment(models.Model):
     is_reply = models.BooleanField(default=False)
     body = models.TextField(max_length=400)
     created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.user} - {self.body[:30]}'
